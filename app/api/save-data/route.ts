@@ -2,6 +2,19 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
+export async function GET() {
+  try {
+    const filePath = path.join(process.cwd(), "context", "data.json");
+    const fileContent = fs.readFileSync(filePath, "utf8");
+    const data = JSON.parse(fileContent);
+    return NextResponse.json(data);
+  } catch (error: any) {
+    console.error("Failed to read data locally:", error);
+    return NextResponse.json({ error: error.message || "Failed to read file" }, { status: 500 });
+  }
+}
+
+
 export async function POST(request: Request) {
   // Only allow saving on localhost / development environment for security!
   if (process.env.NODE_ENV !== "development") {

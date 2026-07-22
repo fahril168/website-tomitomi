@@ -1,42 +1,96 @@
 {
   "priceItems": [
-    { "id": 1, "name": "Tenda 6x4", "category": "Tenda", "unit": "m²", "price": 250000 },
-    { "id": 2, "name": "Tenda Sarnafil 6x6", "category": "Tenda", "unit": "m²", "price": 500000 },
-    { "id": 3, "name": "Tenda Slayer Semi Dekorasi", "category": "Tenda", "unit": "m²", "price": 35000 },
-    { "id": 4, "name": "Tenda Dekorasi VIP", "category": "Tenda", "unit": "m²", "price": 45000 },
-    { "id": 5, "name": "Tenda Lengkung Kombinasi", "category": "Tenda", "unit": "m²", "price": 40000 },
-    { "id": 6, "name": "Tenda Roder Bentang 10m / 15m", "category": "Tenda", "unit": "m²", "price": 75000 },
-    { "id": 7, "name": "Tenda Sarnafil / Kerucut 3x3m", "category": "Tenda", "unit": "Unit / Hari", "price": 350000 },
-    { "id": 8, "name": "Tenda Sarnafil / Kerucut 5x5m", "category": "Tenda", "unit": "Unit / Hari", "price": 650000 },
-    { "id": 9, "name": "Karpet Pelaminan / Jalan (Merah / Hijau)", "category": "Dekorasi & Pelengkap", "unit": "m²", "price": 15000 },
-    { "id": 10, "name": "Backdrop Bunga Artificial 3x4m", "category": "Dekorasi & Pelengkap", "unit": "Set", "price": 1500000 },
-    { "id": 11, "name": "Fairy Lights / Lampu Gantung Warm LED", "category": "Dekorasi & Pelengkap", "unit": "Meter", "price": 12000 },
-    { "id": 12, "name": "Flooring Kayu + Karpet Buatan", "category": "Dekorasi & Pelengkap", "unit": "m²", "price": 30000 },
-    { "id": 13, "name": "Kotak Angpau Akrilik / Kayu VIP", "category": "Dekorasi & Pelengkap", "unit": "Unit", "price": 75000 },
-    { "id": 14, "name": "Pergola Masuk Utama (Gate Dekorasi)", "category": "Dekorasi & Pelengkap", "unit": "Set", "price": 650000 },
-    { "id": 15, "name": "Panggung Modul Knockdown (Tinggi 20cm - 50cm)", "category": "Panggung", "unit": "m²", "price": 35000 },
-    { "id": 16, "name": "Panggung Modul Heavy Duty (Tinggi 1m)", "category": "Panggung", "unit": "m²", "price": 45000 },
-    { "id": 17, "name": "Mini Stage Akad / Pidato (2x3m)", "category": "Panggung", "unit": "Set", "price": 300000 },
-    { "id": 18, "name": "Rigging Stage Frame 6x8m (Panggung Konser)", "category": "Panggung", "unit": "Set", "price": 3500000 },
-    { "id": 19, "name": "Kursi Futura (Polos)", "category": "Kursi", "unit": "Unit", "price": 10000 },
-    { "id": 20, "name": "Kursi Futura + Cover & Pita Warna", "category": "Kursi", "unit": "Unit", "price": 15000 },
-    { "id": 21, "name": "Kursi Tiffany Kayu (Putih / Gold)", "category": "Kursi", "unit": "Unit", "price": 25000 },
-    { "id": 22, "name": "Kursi Tiffany Akrilik Bening (Crystal)", "category": "Kursi", "unit": "Unit", "price": 35000 },
-    { "id": 23, "name": "Kursi Bar High Top Modern", "category": "Kursi", "unit": "Unit", "price": 40000 },
-    { "id": 24, "name": "Sofa VIP Single Leather Exclusive", "category": "Kursi", "unit": "Unit", "price": 150000 },
-    { "id": 25, "name": "Meja Bulat (Round Table) Dia. 120cm + Cover", "category": "Meja", "unit": "Unit", "price": 75000 },
-    { "id": 26, "name": "Meja Bulat VIP Dia. 160cm + Cover & Taplak", "category": "Meja", "unit": "Unit", "price": 110000 },
-    { "id": 27, "name": "Meja Kotak Prasmanan + Cover Kain", "category": "Meja", "unit": "Unit", "price": 60000 },
-    { "id": 28, "name": "Meja Bar High Top + Cover", "category": "Meja", "unit": "Unit", "price": 80000 },
-    { "id": 29, "name": "Meja VIP Kaca Minimalis (Coffee Table)", "category": "Meja", "unit": "Unit", "price": 120000 },
-    { "id": 30, "name": "Sound System 1.000 Watt (2 Speaker + Mic Wireless)", "category": "Elektronik & Genset", "unit": "Set / Hari", "price": 850000 },
-    { "id": 31, "name": "Sound System 3.000 Watt (4 Speaker + Digital Mixer)", "category": "Elektronik & Genset", "unit": "Set / Hari", "price": 2200000 },
-    { "id": 32, "name": "Sound System 5.000 Watt Concert Level", "category": "Elektronik & Genset", "unit": "Set / Hari", "price": 4500000 },
-    { "id": 33, "name": "AC Portable Standing 5 PK", "category": "Elektronik & Genset", "unit": "Unit / Hari", "price": 750000 },
-    { "id": 34, "name": "Kipas Blower Misty Fan Embun 26 Inci", "category": "Elektronik & Genset", "unit": "Unit / Hari", "price": 250000 },
-    { "id": 35, "name": "Genset Silent 40 KVA + Solar Backup", "category": "Elektronik & Genset", "unit": "Unit / Hari", "price": 2500000 },
-    { "id": 36, "name": "Genset Silent 60 KVA + Solar Backup", "category": "Elektronik & Genset", "unit": "Unit / Hari", "price": 3200000 },
-    { "id": 37, "name": "Paket Organ Tunggal + 1 Singer Profesional", "category": "Elektronik & Genset", "unit": "Paket / 4 Jam", "price": 2000000 }
+    {
+      "id": 1,
+      "name": "Tenda 6x4",
+      "category": "Tenda",
+      "unit": "m²",
+      "price": 250000
+    },
+    {
+      "id": 2,
+      "name": "Tenda Sarnafil 6x6",
+      "category": "Tenda",
+      "unit": "m²",
+      "price": 500000
+    },
+    {
+      "id": 9,
+      "name": "Karpet Jalan (Merah)",
+      "category": "Dekorasi & Pelengkap",
+      "unit": "m²",
+      "price": 50000
+    },
+    {
+      "id": 16,
+      "name": "Panggung + Karpet Hitam",
+      "category": "Panggung",
+      "unit": "m²",
+      "price": 300000
+    },
+    {
+      "id": 19,
+      "name": "Kursi Napolly (Polos)",
+      "category": "Kursi",
+      "unit": "Unit",
+      "price": 3000
+    },
+    {
+      "id": 20,
+      "name": "Kursi Napolly + Cover",
+      "category": "Kursi",
+      "unit": "Unit",
+      "price": 5000
+    },
+    {
+      "id": 25,
+      "name": "Meja Bulat (Round Table) + Cover & Taplak",
+      "category": "Meja",
+      "unit": "Unit",
+      "price": 50000
+    },
+    {
+      "id": 27,
+      "name": "Meja Kotak Prasmanan + Cover Kain",
+      "category": "Meja",
+      "unit": "Unit",
+      "price": 50000
+    },
+    {
+      "id": 30,
+      "name": "Sound System",
+      "category": "Elektronik & Genset",
+      "unit": "Set / Hari",
+      "price": 500000
+    },
+    {
+      "id": 31,
+      "name": "Sound System + Penyanyi",
+      "category": "Elektronik & Genset",
+      "unit": "Set / Hari",
+      "price": 1000000
+    },
+    {
+      "id": 34,
+      "name": "Kipas Blower Misty Fan Embun ",
+      "category": "Elektronik & Genset",
+      "unit": "Unit / Hari",
+      "price": 250000
+    },
+    {
+      "id": 35,
+      "name": "Genset",
+      "category": "Elektronik & Genset",
+      "unit": "Unit / Hari",
+      "price": 250000
+    },
+    {
+      "id": 37,
+      "name": "Paket Organ Tunggal + 1 Singer Profesional",
+      "category": "Elektronik & Genset",
+      "unit": "Unit / Hari",
+      "price": 2000000
+    }
   ],
   "services": [
     {
@@ -46,7 +100,11 @@
       "category": "Tenda",
       "image": "/images/tenda.png",
       "description": "Berbagai jenis tenda berkualitas premium yang sudah dipercaya oleh perusahaan ternama dan instansi pemerintah.",
-      "features": ["Tenda Slayer", "Tenda Dekorasi", "Tenda Pagoda", "Tenda Lengkung"],
+      "features": [
+        "Tenda Biasa",
+        "Tenda Sarnafil",
+        "Tenda Kerucut"
+      ],
       "popularSpecs": ""
     },
     {
@@ -54,9 +112,13 @@
       "title": "Panggung",
       "subtitle": "Panggung & Flooring",
       "category": "Panggung",
-      "image": "",
+      "image": "-",
       "description": "Panggung kokoh dengan berbagai ketinggian, dilengkapi karpet dan dapat disesuaikan dengan kebutuhan acara.",
-      "features": ["Panggung 20-150 cm", "Panggung Podium", "Karpet Premium"],
+      "features": [
+        "Panggung + Backdrop",
+        "Panggung Podium",
+        "Karpet Premium"
+      ],
       "popularSpecs": ""
     },
     {
@@ -66,7 +128,11 @@
       "category": "Kursi",
       "image": "/images/kursi.png",
       "description": "Kursi berkualitas dengan berbagai pilihan, dari kursi standar hingga kursi VIP dengan cover elegan.",
-      "features": ["Kursi Futura", "Cover Spandex", "Kursi Sofa VIP"],
+      "features": [
+        "Kursi Napolly",
+        "Cover",
+        "Kursi Futura VIP"
+      ],
       "popularSpecs": ""
     },
     {
@@ -74,9 +140,12 @@
       "title": "Meja",
       "subtitle": "Meja Pesta",
       "category": "Meja",
-      "image": "",
+      "image": "-",
       "description": "Meja dengan berbagai ukuran, mulai dari meja persegi hingga meja bundar dengan taplak premium.",
-      "features": ["Meja Persegi", "Meja Bundar", "Meja VIP Ukir"],
+      "features": [
+        "Meja Persegi",
+        "Meja Bundar"
+      ],
       "popularSpecs": ""
     },
     {
@@ -86,7 +155,11 @@
       "category": "Genset",
       "image": "",
       "description": "Genset handal dengan berbagai kapasitas untuk memastikan acara Anda berjalan lancar tanpa khawatir listrik mati.",
-      "features": ["40 KVA - 150 KVA", "Siap 8 Jam", "Operator Berpengalaman"],
+      "features": [
+        "40 KVA - 150 KVA",
+        "Siap 8 Jam",
+        "Operator Berpengalaman"
+      ],
       "popularSpecs": ""
     },
     {
@@ -94,9 +167,14 @@
       "title": "Perlengkapan",
       "subtitle": "Alat Pendukung",
       "category": "Perlengkapan",
-      "image": "",
+      "image": "-",
       "description": "Perlengkapan lengkap pendukung acara dari sound system, AC, hingga dekorasi taman dan lampu sorot.",
-      "features": ["Sound System", "AC Standing", "Lampu & Kipas", "Dekorasi"],
+      "features": [
+        "Sound System",
+        "Penyanyi",
+        "Lampu & Kipas",
+        "Organ"
+      ],
       "popularSpecs": ""
     }
   ],

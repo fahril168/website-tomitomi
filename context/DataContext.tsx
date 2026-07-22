@@ -59,10 +59,31 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [priceItems, setPriceItems] = useState<PriceItem[]>(initialPrices);
   const [services, setServices] = useState<ServiceItem[]>(initialServices);
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>(initialGallery);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Load data dynamically on mount
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const res = await fetch("/api/save-data");
+        if (res.ok) {
+          const data = await res.json();
+          setPriceItems(data.priceItems || []);
+          setServices(data.services || []);
+          setGalleryItems(data.galleryItems || []);
+        }
+      } catch (error) {
+        console.error("Failed to load CMS data dynamically:", error);
+      } finally {
+        setIsLoaded(true);
+      }
+    };
+    loadData();
+  }, []);
 
   // Save to local data.json file in development mode
   useEffect(() => {
-    if (process.env.NODE_ENV === "development") {
+    if (isLoaded && process.env.NODE_ENV === "development") {
       const syncLocalFile = async () => {
         try {
           await fetch("/api/save-data", {
@@ -83,7 +104,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       syncLocalFile();
     }
-  }, [priceItems, services, galleryItems]);
+  }, [priceItems, services, galleryItems, isLoaded]);
 
   // PRICE ACTIONS
   const addPriceItem = (newItem: Omit<PriceItem, "id">) => {
