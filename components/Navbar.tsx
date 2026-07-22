@@ -40,9 +40,12 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center justify-between">
           {/* Logo Brand */}
           <a href="#hero" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-emerald-400 flex items-center justify-center text-white shadow-md shadow-emerald-600/20 group-hover:scale-105 transition-transform">
-              <Sparkles className="w-5 h-5 fill-white/20" />
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/logo.png"
+              alt="Tomi tomi Logo"
+              className="w-10 h-10 object-contain rounded-xl group-hover:scale-105 transition-transform"
+            />
             <div className="flex flex-col">
               <span className="text-xl font-extrabold tracking-tight text-slate-900 leading-none">
                 Tomi <span className="text-emerald-600">tomi</span>

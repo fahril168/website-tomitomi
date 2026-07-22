@@ -166,19 +166,10 @@ export const PricingSection: React.FC = () => {
           </div>
 
           {/* Footer Note Inside Table */}
-          <div className="bg-slate-50 px-6 py-4 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
+          <div className="bg-slate-50 px-6 py-4 border-t border-slate-200/80 text-xs text-slate-600 text-center sm:text-left">
             <span>
               *Harga dapat berubah sewaktu-waktu sesuai lokasi pengiriman &amp; durasi sewa.
             </span>
-            <a
-              href="https://wa.me/6281234567890?text=Halo%20Tomi%20tomi,%20saya%20ingin%20minta%20penawaran%20harga%20diskon%20volume%20banyak"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-bold text-emerald-700 hover:underline inline-flex items-center gap-1 shrink-0"
-            >
-              <span>Minta Penawaran Khusus (Volume Besar)</span>
-              <ChevronRight className="w-3.5 h-3.5" />
-            </a>
           </div>
         </div>
       </div>
