@@ -65,10 +65,6 @@ export const AboutSection: React.FC = () => {
                 
                 {/* Caption text */}
                 <div className="absolute bottom-6 left-6 right-6 md:bottom-10 md:left-10 md:right-10 text-white space-y-2 z-20">
-                  <span className="inline-flex items-center gap-1 bg-emerald-600/90 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">
-                    <Sparkles className="w-3.5 h-3.5 fill-white/10" />
-                    <span>Tomitomi Gallery</span>
-                  </span>
                   <h3 className="text-xl md:text-3xl font-extrabold tracking-tight">
                     {img.title}
                   </h3>
