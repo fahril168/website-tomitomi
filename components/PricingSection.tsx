@@ -111,9 +111,9 @@ export const PricingSection: React.FC = () => {
               {/* Table Header */}
               <thead>
                 <tr className="bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-600 text-white text-xs sm:text-sm uppercase tracking-wider sticky top-0 z-10">
-                  <th className="py-4 px-4 sm:px-6 font-bold w-16 text-center">No</th>
+                  <th className="py-4 px-4 sm:px-6 font-bold w-16 text-center hidden sm:table-cell">No</th>
                   <th className="py-4 px-6 font-bold">Nama Barang</th>
-                  <th className="py-4 px-6 font-bold text-center">Kategori</th>
+                  <th className="py-4 px-6 font-bold text-center hidden sm:table-cell">Kategori</th>
                   <th className="py-4 px-6 font-bold text-right">Harga (Rp)</th>
                 </tr>
               </thead>
@@ -127,7 +127,7 @@ export const PricingSection: React.FC = () => {
                       className="hover:bg-emerald-50/50 transition-colors group"
                     >
                       {/* No */}
-                      <td className="py-4 px-4 sm:px-6 text-center font-medium text-slate-400 group-hover:text-emerald-700">
+                      <td className="py-4 px-4 sm:px-6 text-center font-medium text-slate-400 group-hover:text-emerald-700 hidden sm:table-cell">
                         {index + 1}
                       </td>
 
@@ -137,7 +137,7 @@ export const PricingSection: React.FC = () => {
                       </td>
 
                       {/* Kategori Badge */}
-                      <td className="py-4 px-6 text-center">
+                      <td className="py-4 px-6 text-center hidden sm:table-cell">
                         <span className="inline-block px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-200/80 rounded-full text-xs font-semibold">
                           {item.category}
                         </span>
