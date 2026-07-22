@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   Sparkles,
@@ -25,6 +25,9 @@ import {
   Table,
   Zap,
   Wrench,
+  Lock,
+  User,
+  LogOut,
 } from "lucide-react";
 import { useData, PriceItem, ServiceItem, GalleryItem } from "@/context/DataContext";
 
@@ -48,6 +51,36 @@ export default function AdminDashboard() {
     deleteGalleryItem,
     resetGalleryData,
   } = useData();
+
+  // Login states
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [usernameInput, setUsernameInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+
+  // Check login on mount
+  useEffect(() => {
+    const logged = sessionStorage.getItem("tomitomi_admin_logged");
+    if (logged === "true") {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (usernameInput === "admin" && passwordInput === "fahril123") {
+      setIsLoggedIn(true);
+      sessionStorage.setItem("tomitomi_admin_logged", "true");
+    } else {
+      alert("Username atau password salah!");
+    }
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    sessionStorage.removeItem("tomitomi_admin_logged");
+    setUsernameInput("");
+    setPasswordInput("");
+  };
 
   const [activeTab, setActiveTab] = useState<"overview" | "harga" | "produk" | "galeri">("harga");
   const [searchPrice, setSearchPrice] = useState("");
@@ -266,6 +299,85 @@ export default function AdminDashboard() {
     return new Intl.NumberFormat("id-ID").format(num);
   };
 
+  if (!isLoggedIn) {
+    return (
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 relative overflow-hidden font-sans">
+        {/* Glow Effects */}
+        <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-emerald-500/10 blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-80 h-80 rounded-full bg-emerald-600/10 blur-[120px]" />
+
+        {/* Card */}
+        <div className="w-full max-w-md bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 shadow-2xl relative z-10 space-y-6">
+          <div className="text-center space-y-2">
+            {/* Brand Icon */}
+            <div className="w-14 h-14 rounded-2xl bg-emerald-600 flex items-center justify-center text-white shadow-lg shadow-emerald-600/20 mx-auto">
+              <Sparkles className="w-7 h-7 fill-white/20" />
+            </div>
+            
+            <h2 className="text-2xl font-extrabold tracking-tight text-white pt-2">
+              Tomi <span className="text-emerald-400">tomi</span> CMS
+            </h2>
+            <p className="text-slate-400 text-xs font-medium uppercase tracking-wider">
+              Silakan login untuk mengelola website
+            </p>
+          </div>
+
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+                Username
+              </label>
+              <div className="relative">
+                <User className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  required
+                  placeholder="Masukkan username"
+                  value={usernameInput}
+                  onChange={(e) => setUsernameInput(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 bg-slate-800/50 text-white rounded-xl border border-slate-700/80 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-sm placeholder-slate-500 transition-all"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+                Password
+              </label>
+              <div className="relative">
+                <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="password"
+                  required
+                  placeholder="Masukkan password"
+                  value={passwordInput}
+                  onChange={(e) => setPasswordInput(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 bg-slate-800/50 text-white rounded-xl border border-slate-700/80 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-sm placeholder-slate-500 transition-all"
+                />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm py-3.5 rounded-xl shadow-lg shadow-emerald-600/10 transition-all mt-2"
+            >
+              Sign In ke Dashboard
+            </button>
+          </form>
+
+          <div className="text-center">
+            <Link
+              href="/"
+              className="text-xs text-slate-500 hover:text-slate-400 transition-colors inline-flex items-center gap-1"
+            >
+              &larr; Kembali ke Website
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex min-h-screen bg-slate-100 font-sans text-slate-900">
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -296,11 +408,19 @@ export default function AdminDashboard() {
               <Link
                 href="/"
                 target="_blank"
-                className="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition-all shadow-md"
+                className="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition-all shadow-md animate-fade-in"
               >
                 <span>Website Utama</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </Link>
+
+              <button
+                onClick={handleLogout}
+                className="inline-flex items-center gap-1.5 bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition-all shadow-md shrink-0"
+              >
+                <span>Keluar</span>
+                <LogOut className="w-3.5 h-3.5" />
+              </button>
             </div>
           </div>
         </header>
