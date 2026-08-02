@@ -57,14 +57,22 @@ export const TestimonialsSection: React.FC = () => {
   const { ref: bannerRef, isVisible: bannerVisible } = useScrollReveal();
 
   return (
-    <section id="testimoni" className="py-20 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="testimoni" className="py-24 relative overflow-hidden">
+      {/* Fixed Background Image for Entire Section */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat bg-fixed"
+        style={{ backgroundImage: "url('/images/488613742_17847813165443677_8703584701075085170_n.png')" }}
+      />
+      {/* Dark Overlay over the section */}
+      <div className="absolute inset-0 z-0 bg-slate-950/90" />
+
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         <div ref={cardsRef} className={`text-center max-w-3xl mx-auto space-y-4 mb-16 reveal ${cardsVisible ? "revealed" : ""}`}>
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
             Apa Kata Klien Setia Tomi tomi?
           </h2>
-          <p className="text-slate-500 text-base sm:text-lg">
+          <p className="text-slate-300 text-base sm:text-lg">
             Kepuasan dan kebahagiaan Anda di hari bahagia adalah prioritas utama
             seluruh tim kami.
           </p>
@@ -75,10 +83,10 @@ export const TestimonialsSection: React.FC = () => {
           {testimonials.map((item, idx) => (
             <div
               key={idx}
-              className={`bg-white p-7 rounded-2xl border border-slate-200 hover:border-emerald-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between relative group reveal ${cardsVisible ? "revealed" : ""}`}
+              className={`bg-white/95 backdrop-blur-md p-7 rounded-2xl border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative group reveal ${cardsVisible ? "revealed" : ""}`}
               style={getDelay(idx)}
             >
-              <Quote className="absolute top-5 right-5 w-8 h-8 text-slate-100 group-hover:text-slate-200 transition-colors pointer-events-none" />
+              <Quote className="absolute top-5 right-5 w-8 h-8 text-slate-200 group-hover:text-slate-300 transition-colors pointer-events-none" />
 
               <div className="space-y-4 relative z-10">
                 {/* Rating stars */}
@@ -94,14 +102,14 @@ export const TestimonialsSection: React.FC = () => {
                   </span>
                 </div>
 
-                <p className="text-slate-600 text-sm leading-relaxed">
+                <p className="text-slate-700 text-sm leading-relaxed font-medium">
                   &ldquo;{item.comment}&rdquo;
                 </p>
               </div>
 
               <div className="pt-5 mt-5 border-t border-slate-100 flex items-center gap-3">
                 <div
-                  className="w-10 h-10 rounded-xl bg-emerald-600 text-white font-bold text-sm flex items-center justify-center shrink-0"
+                  className="w-10 h-10 rounded-xl bg-emerald-600 text-white font-bold text-sm flex items-center justify-center shrink-0 shadow-md shadow-emerald-600/30"
                 >
                   {item.initials}
                 </div>
@@ -122,28 +130,28 @@ export const TestimonialsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Social Proof Metric Banner */}
+        {/* Social Proof Metric Green Banner */}
         <div
           ref={bannerRef}
-          className={`mt-14 bg-emerald-900 text-white rounded-2xl p-6 text-center flex flex-wrap items-center justify-around gap-6 reveal-scale ${bannerVisible ? "revealed" : ""}`}
+          className={`mt-14 bg-emerald-900 text-white rounded-2xl p-6 sm:p-8 text-center flex flex-wrap items-center justify-around gap-6 shadow-xl border border-emerald-700/50 reveal-scale ${bannerVisible ? "revealed" : ""}`}
         >
           <div>
-            <span className="text-2xl font-bold text-emerald-400">99.8%</span>
-            <span className="text-xs font-medium text-slate-400 block mt-0.5">
+            <span className="text-2xl sm:text-3xl font-bold text-emerald-400">99.8%</span>
+            <span className="text-xs font-medium text-emerald-100 block mt-1">
               Tingkat Kepuasan &amp; Repeat Order
             </span>
           </div>
-          <div className="h-8 w-px bg-emerald-700 hidden sm:block" />
+          <div className="h-8 w-px bg-emerald-700/60 hidden sm:block" />
           <div>
-            <span className="text-2xl font-bold text-white">500+</span>
-            <span className="text-xs font-medium text-slate-400 block mt-0.5">
+            <span className="text-2xl sm:text-3xl font-bold text-white">500+</span>
+            <span className="text-xs font-medium text-emerald-100 block mt-1">
               Acara Pernikahan Rumah &amp; Gedung
             </span>
           </div>
-          <div className="h-8 w-px bg-emerald-700 hidden sm:block" />
+          <div className="h-8 w-px bg-emerald-700/60 hidden sm:block" />
           <div>
-            <span className="text-2xl font-bold text-white">300+</span>
-            <span className="text-xs font-medium text-slate-400 block mt-0.5">
+            <span className="text-2xl sm:text-3xl font-bold text-white">300+</span>
+            <span className="text-xs font-medium text-emerald-100 block mt-1">
               Event Corporate &amp; Instansi
             </span>
           </div>

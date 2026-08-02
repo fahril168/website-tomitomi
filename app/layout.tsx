@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Poppins, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { DataProvider } from "@/context/DataContext";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-jakarta",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
+
+const nunitoSans = Nunito_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "600", "700", "800"],
+  variable: "--font-nunito",
 });
 
 export const metadata: Metadata = {
@@ -24,6 +30,11 @@ export const metadata: Metadata = {
     "sewa ac portable event",
   ],
   authors: [{ name: "Tomi tomi Event Equipment Rental" }],
+  icons: {
+    icon: "/images/logo.png",
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
   openGraph: {
     title: "Tomi tomi - Solusi Lengkap Acara Impian Anda",
     description:
@@ -41,10 +52,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className={`${plusJakartaSans.variable} scroll-smooth`}>
+    <html lang="id" className={`${poppins.variable} ${nunitoSans.variable} scroll-smooth`}>
+      <head>
+        <link rel="icon" href="/images/logo.png" type="image/png" sizes="any" />
+        <link rel="apple-touch-icon" href="/images/logo.png" />
+      </head>
       <body className="bg-white text-slate-900 font-sans antialiased selection:bg-emerald-500 selection:text-white">
         <DataProvider>{children}</DataProvider>
       </body>
     </html>
   );
 }
+

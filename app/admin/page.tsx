@@ -7,41 +7,26 @@ import {
   Plus,
   Pencil,
   Trash2,
-  Search,
   ExternalLink,
   RotateCcw,
-  LayoutGrid,
-  FileSpreadsheet,
   Package,
   CheckCircle2,
   X,
   Save,
   ArrowLeft,
-  DollarSign,
   Image as ImageIcon,
-  Tent,
-  Layers,
-  Armchair,
-  Table,
-  Zap,
-  Wrench,
   Lock,
   User,
   LogOut,
 } from "lucide-react";
-import { useData, PriceItem, ServiceItem, GalleryItem } from "@/context/DataContext";
+import { useData, ServiceItem, GalleryItem } from "@/context/DataContext";
 
 import { Sidebar } from "@/components/admin/Sidebar";
 
 export default function AdminDashboard() {
   const {
-    priceItems,
     services,
     galleryItems,
-    addPriceItem,
-    updatePriceItem,
-    deletePriceItem,
-    resetPriceData,
     addServiceItem,
     updateServiceItem,
     deleteServiceItem,
@@ -82,9 +67,7 @@ export default function AdminDashboard() {
     setPasswordInput("");
   };
 
-  const [activeTab, setActiveTab] = useState<"overview" | "harga" | "produk" | "galeri">("harga");
-  const [searchPrice, setSearchPrice] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState("Semua");
+  const [activeTab, setActiveTab] = useState<"overview" | "produk" | "galeri">("produk");
 
   // Gallery Modal States
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
@@ -97,21 +80,6 @@ export default function AdminDashboard() {
     src: "",
     title: "",
     desc: "",
-  });
-
-  // Price Modal States
-  const [isPriceModalOpen, setIsPriceModalOpen] = useState(false);
-  const [editingPriceItem, setEditingPriceItem] = useState<PriceItem | null>(null);
-  const [priceForm, setPriceForm] = useState<{
-    name: string;
-    category: PriceItem["category"];
-    unit: string;
-    price: number;
-  }>({
-    name: "",
-    category: "Tenda",
-    unit: "m²",
-    price: 0,
   });
 
   // Service Modal States
@@ -134,52 +102,6 @@ export default function AdminDashboard() {
     features: "",
     popularSpecs: "",
   });
-
-  // Filtered prices
-  const filteredPrices = priceItems.filter((item) => {
-    const matchCat = categoryFilter === "Semua" || item.category === categoryFilter;
-    const matchSearch = item.name.toLowerCase().includes(searchPrice.toLowerCase());
-    return matchCat && matchSearch;
-  });
-
-  // Handle Open Price Modal
-  const handleOpenPriceModal = (item?: PriceItem) => {
-    if (item) {
-      setEditingPriceItem(item);
-      setPriceForm({
-        name: item.name,
-        category: item.category,
-        unit: item.unit,
-        price: item.price,
-      });
-    } else {
-      setEditingPriceItem(null);
-      setPriceForm({
-        name: "",
-        category: "Tenda",
-        unit: "m²",
-        price: 0,
-      });
-    }
-    setIsPriceModalOpen(true);
-  };
-
-  // Handle Save Price Item
-  const handleSavePrice = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!priceForm.name || priceForm.price <= 0) {
-      alert("Mohon isi nama barang dan harga dengan benar.");
-      return;
-    }
-
-    if (editingPriceItem) {
-      updatePriceItem(editingPriceItem.id, priceForm);
-    } else {
-      addPriceItem(priceForm);
-    }
-
-    setIsPriceModalOpen(false);
-  };
 
   // Handle Open Service Modal
   const handleOpenServiceModal = (item?: ServiceItem) => {
@@ -278,26 +200,7 @@ export default function AdminDashboard() {
     setIsGalleryModalOpen(false);
   };
 
-  const getIconForTitle = (title: string) => {
-    switch (title.toLowerCase()) {
-      case "tenda":
-        return Tent;
-      case "panggung":
-        return Layers;
-      case "kursi":
-        return Armchair;
-      case "meja":
-        return Table;
-      case "genset":
-        return Zap;
-      default:
-        return Wrench;
-    }
-  };
 
-  const formatRupiah = (num: number) => {
-    return new Intl.NumberFormat("id-ID").format(num);
-  };
 
   if (!isLoggedIn) {
     return (
@@ -427,121 +330,6 @@ export default function AdminDashboard() {
 
         {/* Main Admin Content Container */}
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        {/* TAB 1: KELOLA DAFTAR HARGA */}
-        {activeTab === "harga" && (
-          <div className="space-y-6 animate-fade-in">
-            {/* Action Bar */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 bg-white p-5 rounded-3xl border border-slate-200 shadow-sm">
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-1">
-                {/* Search Bar */}
-                <div className="relative flex-1 max-w-md">
-                  <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                  <input
-                    type="text"
-                    placeholder="Cari barang sewa..."
-                    value={searchPrice}
-                    onChange={(e) => setSearchPrice(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 bg-slate-50 text-slate-900 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-xs sm:text-sm"
-                  />
-                </div>
-
-                {/* Category Filter */}
-                <select
-                  value={categoryFilter}
-                  onChange={(e) => setCategoryFilter(e.target.value)}
-                  className="px-3.5 py-2.5 bg-slate-50 text-slate-900 rounded-xl border border-slate-200 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                >
-                  <option value="Semua">Semua Kategori</option>
-                  <option value="Tenda">Tenda</option>
-                  <option value="Dekorasi & Pelengkap">Dekorasi &amp; Pelengkap</option>
-                  <option value="Panggung">Panggung</option>
-                  <option value="Kursi">Kursi</option>
-                  <option value="Meja">Meja</option>
-                  <option value="Elektronik & Genset">Elektronik &amp; Genset</option>
-                </select>
-              </div>
-
-              <button
-                onClick={() => handleOpenPriceModal()}
-                className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl shadow-md transition-all shrink-0"
-              >
-                <Plus className="w-4 h-4 stroke-[3]" />
-                <span>Tambah Barang Baru</span>
-              </button>
-            </div>
-
-            {/* Price Table Card */}
-            <div className="bg-white rounded-3xl border border-slate-200 shadow-lg overflow-hidden">
-              <div className="overflow-x-auto max-h-[500px] overflow-y-auto">
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr className="bg-slate-900 text-white text-xs uppercase tracking-wider sticky top-0 z-10">
-                      <th className="py-4 px-4 font-bold text-center w-12">No</th>
-                      <th className="py-4 px-6 font-bold">Nama Barang</th>
-                      <th className="py-4 px-6 font-bold text-center">Kategori</th>
-                      <th className="py-4 px-6 font-bold text-center">Satuan</th>
-                      <th className="py-4 px-6 font-bold text-right">Harga (Rp)</th>
-                      <th className="py-4 px-6 font-bold text-center w-32">Aksi CMS</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100 text-xs sm:text-sm text-slate-700">
-                    {filteredPrices.length > 0 ? (
-                      filteredPrices.map((item, idx) => (
-                        <tr key={item.id} className="hover:bg-slate-50 transition-colors">
-                          <td className="py-3.5 px-4 text-center font-medium text-slate-400">
-                            {idx + 1}
-                          </td>
-                          <td className="py-3.5 px-6 font-bold text-slate-900">
-                            {item.name}
-                          </td>
-                          <td className="py-3.5 px-6 text-center">
-                            <span className="inline-block px-3 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-200/80 rounded-full text-xs font-semibold">
-                              {item.category}
-                            </span>
-                          </td>
-                          <td className="py-3.5 px-6 text-center text-slate-500 font-medium">
-                            {item.unit}
-                          </td>
-                          <td className="py-3.5 px-6 text-right font-extrabold text-emerald-600">
-                            {formatRupiah(item.price)}
-                          </td>
-                          <td className="py-3.5 px-6 text-center">
-                            <div className="flex items-center justify-center gap-1.5">
-                              <button
-                                onClick={() => handleOpenPriceModal(item)}
-                                className="p-2 text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
-                                title="Edit Barang"
-                              >
-                                <Pencil className="w-4 h-4" />
-                              </button>
-                              <button
-                                onClick={() => {
-                                  if (confirm(`Yakin hapus "${item.name}" dari daftar harga?`)) {
-                                    deletePriceItem(item.id);
-                                  }
-                                }}
-                                className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors"
-                                title="Hapus Barang"
-                              >
-                                <Trash2 className="w-4 h-4" />
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan={6} className="py-12 text-center text-slate-400">
-                          Tidak ada barang ditemukan.
-                        </td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* TAB 2: KELOLA PRODUK & LAYANAN */}
         {activeTab === "produk" && (
@@ -569,63 +357,59 @@ export default function AdminDashboard() {
             {/* Product Services Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {services.map((item) => {
-                const IconComp = getIconForTitle(item.title);
+                const hasValidImage = item.image && item.image !== "-" && item.image.startsWith("/");
                 return (
                   <div
                     key={item.id}
-                    className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-5"
+                    className="bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col overflow-hidden"
                   >
-                    <div className="space-y-4">
-                      {/* Icon Box */}
-                      <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
-                        <IconComp className="w-6 h-6 stroke-[2]" />
-                      </div>
-
-                      {/* Title & Desc */}
-                      <div className="space-y-2">
-                        <h3 className="text-lg font-bold text-slate-900 leading-snug">
-                          {item.title}
-                        </h3>
-                        <p className="text-slate-500 text-xs leading-relaxed line-clamp-3">
-                          {item.description}
-                        </p>
-                      </div>
-
-                      {/* Bullet List */}
-                      <ul className="space-y-1.5 pt-1">
-                        {item.features.map((feat, itemIdx) => (
-                          <li
-                            key={itemIdx}
-                            className="flex items-center gap-2 text-xs font-semibold text-slate-700"
-                          >
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
-                            <span className="truncate">{feat}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    {/* Card Image Preview */}
+                    <div className="relative w-full h-44 bg-slate-900 overflow-hidden">
+                      {hasValidImage ? (
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-slate-400 text-xs font-semibold">
+                          Belum ada gambar
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                      <h3 className="absolute bottom-3 left-4 right-4 text-base font-bold text-white tracking-tight drop-shadow-md">
+                        {item.title}
+                      </h3>
                     </div>
 
-                    {/* Card Actions */}
-                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                      <button
-                        onClick={() => handleOpenServiceModal(item)}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800 bg-emerald-100 hover:bg-emerald-200 px-3.5 py-2 rounded-xl transition-colors"
-                      >
-                        <Pencil className="w-3.5 h-3.5" />
-                        <span>Edit Layanan</span>
-                      </button>
+                    {/* Card Info */}
+                    <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                      <p className="text-slate-500 text-xs leading-relaxed line-clamp-2">
+                        {item.description || "Tidak ada deskripsi"}
+                      </p>
 
-                      <button
-                        onClick={() => {
-                          if (confirm(`Yakin hapus produk layanan "${item.title}"?`)) {
-                            deleteServiceItem(item.id);
-                          }
-                        }}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-rose-600 hover:text-rose-800 p-2 rounded-xl hover:bg-rose-50 transition-colors"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                        <span>Hapus</span>
-                      </button>
+                      {/* Card Actions */}
+                      <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                        <button
+                          onClick={() => handleOpenServiceModal(item)}
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800 bg-emerald-100 hover:bg-emerald-200 px-3.5 py-2 rounded-xl transition-colors"
+                        >
+                          <Pencil className="w-3.5 h-3.5" />
+                          <span>Edit / Ganti Gambar</span>
+                        </button>
+
+                        <button
+                          onClick={() => {
+                            if (confirm(`Yakin hapus produk layanan "${item.title}"?`)) {
+                              deleteServiceItem(item.id);
+                            }
+                          }}
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-rose-600 hover:text-rose-800 p-2 rounded-xl hover:bg-rose-50 transition-colors"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                          <span>Hapus</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 );
@@ -638,21 +422,7 @@ export default function AdminDashboard() {
         {activeTab === "overview" && (
           <div className="space-y-8 animate-fade-in">
             {/* Stats Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                  <FileSpreadsheet className="w-7 h-7" />
-                </div>
-                <div>
-                  <div className="text-3xl font-extrabold text-slate-900">
-                    {priceItems.length}
-                  </div>
-                  <div className="text-xs text-slate-500 font-semibold mt-0.5">
-                    Total Item Barang Sewa
-                  </div>
-                </div>
-              </div>
-
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-center gap-4">
                 <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
                   <Package className="w-7 h-7" />
@@ -687,7 +457,7 @@ export default function AdminDashboard() {
                 </div>
                 <div>
                   <div className="text-3xl font-extrabold text-emerald-600">
-                    6
+                    {services.length}
                   </div>
                   <div className="text-xs text-slate-500 font-semibold mt-0.5">
                     Kategori Utama Aktif
@@ -703,26 +473,20 @@ export default function AdminDashboard() {
                 <span>Panduan Penggunaan CMS Tomi tomi</span>
               </h3>
               <p className="text-slate-300 text-sm leading-relaxed max-w-3xl">
-                Setiap perubahan yang Anda lakukan di dashboard admin ini (menambah barang, mengubah harga, memperbarui deskripsi atau gambar produk, mengelola galeri) secara otomatis tersimpan dan sinkron langsung dengan halaman utama website penyewaan.
+                Setiap perubahan yang Anda lakukan di dashboard admin ini (memperbarui deskripsi atau gambar produk, mengelola galeri) secara otomatis tersimpan dan sinkron langsung dengan halaman utama website penyewaan.
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
                 <button
-                  onClick={() => setActiveTab("harga")}
+                  onClick={() => setActiveTab("produk")}
                   className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all"
                 >
-                  Mulai Kelola Harga
-                </button>
-                <button
-                  onClick={() => setActiveTab("produk")}
-                  className="bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all"
-                >
-                  Mulai Kelola Produk
+                  Kelola Produk &amp; Layanan
                 </button>
                 <button
                   onClick={() => setActiveTab("galeri")}
                   className="bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all"
                 >
-                  Mulai Kelola Galeri
+                  Kelola Galeri Foto
                 </button>
               </div>
             </div>
@@ -809,117 +573,7 @@ export default function AdminDashboard() {
         )}
       </main>
 
-      {/* MODAL 1: EDIT / ADD PRICE ITEM */}
-      {isPriceModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 relative space-y-5">
-            <button
-              onClick={() => setIsPriceModalOpen(false)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 rounded-full"
-            >
-              <X className="w-5 h-5" />
-            </button>
 
-            <div>
-              <h3 className="text-xl font-extrabold text-slate-900">
-                {editingPriceItem ? "Edit Barang Sewa" : "Tambah Barang Sewa Baru"}
-              </h3>
-              <p className="text-xs text-slate-500">
-                Isi rincian barang sewa di bawah ini.
-              </p>
-            </div>
-
-            <form onSubmit={handleSavePrice} className="space-y-4">
-              <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                  Nama Barang <span className="text-rose-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Contoh: Tenda Roder 15m"
-                  value={priceForm.name}
-                  onChange={(e) => setPriceForm({ ...priceForm, name: e.target.value })}
-                  className="w-full px-4 py-2.5 bg-slate-50 text-slate-900 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                  Kategori
-                </label>
-                <select
-                  value={priceForm.category}
-                  onChange={(e) =>
-                    setPriceForm({
-                      ...priceForm,
-                      category: e.target.value as PriceItem["category"],
-                    })
-                  }
-                  className="w-full px-4 py-2.5 bg-slate-50 text-slate-900 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm font-medium"
-                >
-                  <option value="Tenda">Tenda</option>
-                  <option value="Dekorasi & Pelengkap">Dekorasi &amp; Pelengkap</option>
-                  <option value="Panggung">Panggung</option>
-                  <option value="Kursi">Kursi</option>
-                  <option value="Meja">Meja</option>
-                  <option value="Elektronik & Genset">Elektronik &amp; Genset</option>
-                </select>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                    Satuan
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="m², Unit, Set, Hari"
-                    value={priceForm.unit}
-                    onChange={(e) => setPriceForm({ ...priceForm, unit: e.target.value })}
-                    className="w-full px-4 py-2.5 bg-slate-50 text-slate-900 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                    Harga (Rp) <span className="text-rose-500">*</span>
-                  </label>
-                  <input
-                    type="number"
-                    required
-                    min={0}
-                    placeholder="25000"
-                    value={priceForm.price || ""}
-                    onChange={(e) =>
-                      setPriceForm({ ...priceForm, price: Number(e.target.value) })
-                    }
-                    className="w-full px-4 py-2.5 bg-slate-50 text-slate-900 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm font-bold text-emerald-700"
-                  />
-                </div>
-              </div>
-
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
-                <button
-                  type="button"
-                  onClick={() => setIsPriceModalOpen(false)}
-                  className="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl"
-                >
-                  Batal
-                </button>
-                <button
-                  type="submit"
-                  className="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md"
-                >
-                  <Save className="w-4 h-4" />
-                  <span>Simpan Perubahan</span>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
 
       {/* MODAL 2: EDIT / ADD SERVICE ITEM */}
       {isServiceModalOpen && (
@@ -990,14 +644,39 @@ export default function AdminDashboard() {
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                  URL / Path Gambar <span className="text-rose-500">*</span>
+                  Pilih atau Input URL Gambar <span className="text-rose-500">*</span>
                 </label>
+                {/* Image Picker Select */}
+                <select
+                  value={serviceForm.image}
+                  onChange={(e) =>
+                    setServiceForm({ ...serviceForm, image: e.target.value })
+                  }
+                  className="w-full px-4 py-2.5 bg-slate-50 text-slate-900 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm mb-2"
+                >
+                  <option value="">-- Pilih dari Koleksi Gambar --</option>
+                  <option value="/images/tenda.png">Tenda (/images/tenda.png)</option>
+                  <option value="/images/kursi.png">Kursi (/images/kursi.png)</option>
+                  <option value="/images/488418828_17847816027443677_1742583229405988828_n.png">Event Eksklusif 1</option>
+                  <option value="/images/488504212_17847816054443677_596256452473833969_n.png">Panggung &amp; Lighting</option>
+                  <option value="/images/488613742_17847813165443677_8703584701075085170_n.png">Tenda Premium</option>
+                  <option value="/images/488736167_17847817164443677_2853469951436042474_n.png">Layout Meja</option>
+                  <option value="/images/488801816_17847813156443677_6208976998321015747_n.png">Perlengkapan Acara</option>
+                  <option value="/images/489001683_17847816036443677_2577878175083365400_n.png">Pesta Pernikahan</option>
+                  <option value="/images/489574839_17847816063443677_7252592277985721862_n.png">Event Corporate</option>
+                  {galleryItems.map((gItem) => (
+                    <option key={gItem.id} value={gItem.src}>
+                      {gItem.title} ({gItem.src.substring(0, 30)}...)
+                    </option>
+                  ))}
+                </select>
+
                 <div className="relative">
                   <ImageIcon className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
                     type="text"
                     required
-                    placeholder="/images/tenda.png atau URL Unsplash"
+                    placeholder="Atau ketik URL/Path manual..."
                     value={serviceForm.image}
                     onChange={(e) =>
                       setServiceForm({ ...serviceForm, image: e.target.value })
@@ -1005,6 +684,20 @@ export default function AdminDashboard() {
                     className="w-full pl-10 pr-4 py-2.5 bg-slate-50 text-slate-900 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
                   />
                 </div>
+
+                {/* Live Image Preview */}
+                {serviceForm.image && (
+                  <div className="mt-3 relative w-full h-32 rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
+                    <img
+                      src={serviceForm.image}
+                      alt="Preview"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLElement).style.display = "none";
+                      }}
+                    />
+                  </div>
+                )}
               </div>
 
               <div>

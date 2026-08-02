@@ -1,104 +1,11 @@
 {
-  "priceItems": [
-    {
-      "id": 1,
-      "name": "Tenda 6x4",
-      "category": "Tenda",
-      "unit": "m²",
-      "price": 250000
-    },
-    {
-      "id": 2,
-      "name": "Tenda Sarnafil 6x6",
-      "category": "Tenda",
-      "unit": "m²",
-      "price": 500000
-    },
-    {
-      "id": 9,
-      "name": "Karpet Jalan (Merah)",
-      "category": "Dekorasi & Pelengkap",
-      "unit": "m²",
-      "price": 50000
-    },
-    {
-      "id": 16,
-      "name": "Panggung + Karpet Hitam",
-      "category": "Panggung",
-      "unit": "m²",
-      "price": 300000
-    },
-    {
-      "id": 19,
-      "name": "Kursi Napolly (Polos)",
-      "category": "Kursi",
-      "unit": "Unit",
-      "price": 3000
-    },
-    {
-      "id": 20,
-      "name": "Kursi Napolly + Cover",
-      "category": "Kursi",
-      "unit": "Unit",
-      "price": 5000
-    },
-    {
-      "id": 25,
-      "name": "Meja Bulat (Round Table) + Cover & Taplak",
-      "category": "Meja",
-      "unit": "Unit",
-      "price": 50000
-    },
-    {
-      "id": 27,
-      "name": "Meja Kotak Prasmanan + Cover Kain",
-      "category": "Meja",
-      "unit": "Unit",
-      "price": 50000
-    },
-    {
-      "id": 30,
-      "name": "Sound System",
-      "category": "Elektronik & Genset",
-      "unit": "Set / Hari",
-      "price": 500000
-    },
-    {
-      "id": 31,
-      "name": "Sound System + Penyanyi",
-      "category": "Elektronik & Genset",
-      "unit": "Set / Hari",
-      "price": 1000000
-    },
-    {
-      "id": 34,
-      "name": "Kipas Blower Misty Fan Embun ",
-      "category": "Elektronik & Genset",
-      "unit": "Unit / Hari",
-      "price": 250000
-    },
-    {
-      "id": 35,
-      "name": "Genset",
-      "category": "Elektronik & Genset",
-      "unit": "Unit / Hari",
-      "price": 250000
-    },
-    {
-      "id": 37,
-      "name": "Paket Organ Tunggal + 1 Singer Profesional",
-      "category": "Elektronik & Genset",
-      "unit": "Unit / Hari",
-      "price": 2000000
-    }
-  ],
   "services": [
     {
       "id": "tenda",
       "title": "Tenda",
       "subtitle": "Tenda Premium",
       "category": "Tenda",
-      "image": "/images/tenda.png",
+      "image": "/images/488418828_17847816027443677_1742583229405988828_n.png",
       "description": "Berbagai jenis tenda berkualitas premium yang sudah dipercaya oleh perusahaan ternama dan instansi pemerintah.",
       "features": [
         "Tenda Biasa",
@@ -112,7 +19,7 @@
       "title": "Panggung",
       "subtitle": "Panggung & Flooring",
       "category": "Panggung",
-      "image": "-",
+      "image": "/images/488504212_17847816054443677_596256452473833969_n.png",
       "description": "Panggung kokoh dengan berbagai ketinggian, dilengkapi karpet dan dapat disesuaikan dengan kebutuhan acara.",
       "features": [
         "Panggung + Backdrop",
@@ -126,7 +33,7 @@
       "title": "Kursi",
       "subtitle": "Kursi VIP",
       "category": "Kursi",
-      "image": "/images/kursi.png",
+      "image": "/images/488801816_17847813156443677_6208976998321015747_n.png",
       "description": "Kursi berkualitas dengan berbagai pilihan, dari kursi standar hingga kursi VIP dengan cover elegan.",
       "features": [
         "Kursi Napolly",
@@ -140,7 +47,7 @@
       "title": "Meja",
       "subtitle": "Meja Pesta",
       "category": "Meja",
-      "image": "-",
+      "image": "/images/488736167_17847817164443677_2853469951436042474_n.png",
       "description": "Meja dengan berbagai ukuran, mulai dari meja persegi hingga meja bundar dengan taplak premium.",
       "features": [
         "Meja Persegi",
@@ -150,10 +57,10 @@
     },
     {
       "id": "genset",
-      "title": "Genset",
-      "subtitle": "Genset Silent",
-      "category": "Genset",
-      "image": "",
+      "title": "Sound System",
+      "subtitle": "Sound System",
+      "category": "Sound System",
+      "image": "/images/488613742_17847813165443677_8703584701075085170_n.png",
       "description": "Genset handal dengan berbagai kapasitas untuk memastikan acara Anda berjalan lancar tanpa khawatir listrik mati.",
       "features": [
         "40 KVA - 150 KVA",
@@ -167,7 +74,7 @@
       "title": "Perlengkapan",
       "subtitle": "Alat Pendukung",
       "category": "Perlengkapan",
-      "image": "-",
+      "image": "/images/489001683_17847816036443677_2577878175083365400_n.png",
       "description": "Perlengkapan lengkap pendukung acara dari sound system, AC, hingga dekorasi taman dan lampu sorot.",
       "features": [
         "Sound System",

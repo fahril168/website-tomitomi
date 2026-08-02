@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import {
   Phone,
   Mail,
@@ -21,19 +22,19 @@ export const Footer: React.FC = () => {
   };
 
   const socialLinks = [
-    { href: "https://instagram.com", icon: Instagram, label: "Instagram" },
+    { href: "https://www.instagram.com/tomitomi.project/", icon: Instagram, label: "Instagram" },
     { href: "https://facebook.com", icon: Facebook, label: "Facebook" },
     { href: "https://youtube.com", icon: Youtube, label: "Youtube" },
-    { href: "https://wa.me/6281234567890", icon: MessageCircle, label: "WhatsApp" },
+    { href: "https://wa.me/6282196321203", icon: MessageCircle, label: "WhatsApp" },
   ];
 
   return (
     <footer className="bg-slate-950 text-white pt-16 pb-8 border-t border-slate-800">
-      <div ref={footerRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div ref={footerRef} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800 reveal ${isVisible ? "revealed" : ""}`}>
           {/* Brand Info */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-2.5">
+            <Link href="/" className="flex items-center gap-2.5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/logo.png"
@@ -43,7 +44,7 @@ export const Footer: React.FC = () => {
               <span className="text-xl font-bold tracking-tight text-white">
                 Tomi <span className="text-emerald-400">tomi</span>
               </span>
-            </div>
+            </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
               Mitra penyewaan perlengkapan acara dan pesta terpercaya. Menyediakan tenda, panggung, tempat duduk, sound system, lighting, organ tunggal, hingga generator power dengan jaminan bersih, higienis, dan tepat waktu.
             </p>
@@ -70,39 +71,29 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-sm text-slate-400">
               <li>
-                <a href="#hero" className="hover:text-emerald-400 transition-colors">
+                <Link href="/" className="hover:text-emerald-400 transition-colors">
                   Beranda
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#tentang-kami" className="hover:text-emerald-400 transition-colors">
+                <Link href="/tentang-kami" className="hover:text-emerald-400 transition-colors">
                   Tentang Kami
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#produk" className="hover:text-emerald-400 transition-colors">
-                  Katalog Produk
-                </a>
+                <Link href="/produk" className="hover:text-emerald-400 transition-colors">
+                  Produk &amp; Layanan
+                </Link>
               </li>
               <li>
-                <a href="#harga" className="hover:text-emerald-400 transition-colors">
-                  Daftar Harga
-                </a>
-              </li>
-              <li>
-                <a href="#testimoni" className="hover:text-emerald-400 transition-colors">
-                  Testimoni Klien
-                </a>
-              </li>
-              <li>
-                <a href="#kontak" className="hover:text-emerald-400 transition-colors">
+                <Link href="/kontak" className="hover:text-emerald-400 transition-colors">
                   Hubungi &amp; Lokasi
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/admin" className="text-emerald-400 font-medium hover:text-emerald-300 transition-colors">
+                <Link href="/admin" className="text-emerald-400 font-medium hover:text-emerald-300 transition-colors">
                   Dashboard Admin CMS
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -130,15 +121,15 @@ export const Footer: React.FC = () => {
             <div className="space-y-3 text-sm text-slate-400">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Jl. Raya Utama No. 88, Jakarta &amp; Sekitarnya</span>
+                <span>Belakang SMP Negeri 4 Baubau, Tanganapada, Kec. Murhum, Kota Bau-Bau, Sulawesi Tenggara</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>0812-3456-7890 (WhatsApp 24/7)</span>
+                <span>0821-9632-1203 / 0852-4159-0141</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>info@tomitomi-rental.com</span>
+                <span>tomitomi.project@gmail.com</span>
               </div>
             </div>
           </div>

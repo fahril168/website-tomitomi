@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 import { LucideIcon } from "lucide-react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -45,6 +45,17 @@ export const Button: React.FC<ButtonProps> = ({
   const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
 
   if (href) {
+    const isInternal = href.startsWith("/");
+    if (isInternal) {
+      return (
+        <Link href={href} className={classes}>
+          {Icon && iconPosition === "left" && <Icon className="w-4.5 h-4.5 shrink-0" />}
+          <span>{children}</span>
+          {Icon && iconPosition === "right" && <Icon className="w-4.5 h-4.5 shrink-0" />}
+        </Link>
+      );
+    }
+
     return (
       <a href={href} className={classes}>
         {Icon && iconPosition === "left" && <Icon className="w-4.5 h-4.5 shrink-0" />}

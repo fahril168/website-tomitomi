@@ -3,7 +3,6 @@
 import React from "react";
 import Link from "next/link";
 import {
-  FileSpreadsheet,
   Package,
   Sparkles,
   LayoutGrid,
@@ -12,8 +11,8 @@ import {
 } from "lucide-react";
 
 interface SidebarProps {
-  activeTab: "overview" | "harga" | "produk" | "galeri";
-  setActiveTab: (tab: "overview" | "harga" | "produk" | "galeri") => void;
+  activeTab: "overview" | "produk" | "galeri";
+  setActiveTab: (tab: "overview" | "produk" | "galeri") => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
@@ -22,11 +21,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => 
       id: "overview" as const,
       name: "Dashboard Overview",
       icon: LayoutGrid,
-    },
-    {
-      id: "harga" as const,
-      name: "Kelola Daftar Harga",
-      icon: FileSpreadsheet,
     },
     {
       id: "produk" as const,

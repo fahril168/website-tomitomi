@@ -2,14 +2,6 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-export interface PriceItem {
-  id: number;
-  name: string;
-  category: "Tenda" | "Dekorasi & Pelengkap" | "Panggung" | "Kursi" | "Meja" | "Elektronik & Genset";
-  unit: string;
-  price: number;
-}
-
 export interface ServiceItem {
   id: string;
   title: string;
@@ -31,18 +23,12 @@ export interface GalleryItem {
 
 import defaultData from "./data.json";
 
-const initialPrices: PriceItem[] = defaultData.priceItems as PriceItem[];
 const initialServices: ServiceItem[] = defaultData.services as ServiceItem[];
 const initialGallery: GalleryItem[] = defaultData.galleryItems as GalleryItem[];
 
 interface DataContextType {
-  priceItems: PriceItem[];
   services: ServiceItem[];
   galleryItems: GalleryItem[];
-  addPriceItem: (item: Omit<PriceItem, "id">) => void;
-  updatePriceItem: (id: number, item: Partial<PriceItem>) => void;
-  deletePriceItem: (id: number) => void;
-  resetPriceData: () => void;
   addServiceItem: (service: Omit<ServiceItem, "id">) => void;
   updateServiceItem: (id: string, service: Partial<ServiceItem>) => void;
   deleteServiceItem: (id: string) => void;
@@ -56,7 +42,6 @@ interface DataContextType {
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
 export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [priceItems, setPriceItems] = useState<PriceItem[]>(initialPrices);
   const [services, setServices] = useState<ServiceItem[]>(initialServices);
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>(initialGallery);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -68,7 +53,6 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const res = await fetch("/api/save-data");
         if (res.ok) {
           const data = await res.json();
-          setPriceItems(data.priceItems || []);
           setServices(data.services || []);
           setGalleryItems(data.galleryItems || []);
         }
@@ -92,7 +76,6 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              priceItems,
               services,
               galleryItems,
             }),
@@ -104,27 +87,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       syncLocalFile();
     }
-  }, [priceItems, services, galleryItems, isLoaded]);
-
-  // PRICE ACTIONS
-  const addPriceItem = (newItem: Omit<PriceItem, "id">) => {
-    const nextId = priceItems.length > 0 ? Math.max(...priceItems.map((p) => p.id)) + 1 : 1;
-    setPriceItems((prev) => [...prev, { ...newItem, id: nextId }]);
-  };
-
-  const updatePriceItem = (id: number, updatedFields: Partial<PriceItem>) => {
-    setPriceItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, ...updatedFields } : item))
-    );
-  };
-
-  const deletePriceItem = (id: number) => {
-    setPriceItems((prev) => prev.filter((item) => item.id !== id));
-  };
-
-  const resetPriceData = () => {
-    setPriceItems(initialPrices);
-  };
+  }, [services, galleryItems, isLoaded]);
 
   // SERVICE ACTIONS
   const addServiceItem = (newService: Omit<ServiceItem, "id">) => {
@@ -169,13 +132,8 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   return (
     <DataContext.Provider
       value={{
-        priceItems,
         services,
         galleryItems,
-        addPriceItem,
-        updatePriceItem,
-        deletePriceItem,
-        resetPriceData,
         addServiceItem,
         updateServiceItem,
         deleteServiceItem,
