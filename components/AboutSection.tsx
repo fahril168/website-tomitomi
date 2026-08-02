@@ -52,7 +52,7 @@ export const AboutSection: React.FC = () => {
 
   return (
     <section id="tentang-kami" className="py-24 bg-white relative overflow-hidden select-none">
-      <div ref={sectionRef} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div ref={sectionRef} className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal ${sectionVisible ? "revealed" : ""}`}>
           
           {/* Left Column — Content */}

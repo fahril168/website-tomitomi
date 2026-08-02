@@ -75,7 +75,7 @@ export default function TentangKamiPage() {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/50 to-slate-900/30" />
-        <div ref={heroRef} className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pb-12 w-full">
+        <div ref={heroRef} className="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pb-12 w-full">
           <div className={`space-y-4 reveal ${heroVisible ? "revealed" : ""}`}>
             <div className="flex items-center gap-2 text-emerald-400 text-sm font-semibold">
               <Link href="/" className="hover:text-emerald-300 transition-colors">Beranda</Link>
@@ -94,7 +94,7 @@ export default function TentangKamiPage() {
 
       {/* Profil Perusahaan */}
       <section className="py-24 bg-white">
-        <div ref={storyRef} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref={storyRef} className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal ${storyVisible ? "revealed" : ""}`}>
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-2 rounded-full text-sm font-bold">
@@ -131,7 +131,7 @@ export default function TentangKamiPage() {
 
       {/* Visi & Misi */}
       <section className="py-24 bg-slate-50">
-        <div ref={visiRef} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref={visiRef} className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <div className={`grid grid-cols-1 lg:grid-cols-3 gap-8 reveal ${visiVisible ? "revealed" : ""}`}>
             {/* Visi */}
             <div className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-shadow duration-300 space-y-5">
@@ -202,7 +202,7 @@ export default function TentangKamiPage() {
       {/* Statistik */}
       <section className="py-20 bg-emerald-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent_60%)]" />
-        <div ref={statsRef} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div ref={statsRef} className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 relative z-10">
           <div className={`grid grid-cols-2 lg:grid-cols-4 gap-8 reveal ${statsVisible ? "revealed" : ""}`}>
             {stats.map((stat, idx) => (
               <div key={idx} className="text-center space-y-3">
@@ -223,7 +223,7 @@ export default function TentangKamiPage() {
 
       {/* Kenapa Memilih Kami */}
       <section className="py-24 bg-white">
-        <div ref={whyRef} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref={whyRef} className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <div className={`text-center max-w-3xl mx-auto space-y-4 mb-16 reveal ${whyVisible ? "revealed" : ""}`}>
             <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-2 rounded-full text-sm font-bold mx-auto">
               <Award className="w-4 h-4" />
@@ -257,7 +257,7 @@ export default function TentangKamiPage() {
 
       {/* Galeri */}
       <section className="py-24 bg-slate-50">
-        <div ref={galRef} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref={galRef} className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <div className={`text-center max-w-3xl mx-auto space-y-4 mb-16 reveal ${galVisible ? "revealed" : ""}`}>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
               Galeri Kegiatan Kami
@@ -293,7 +293,7 @@ export default function TentangKamiPage() {
       {/* CTA */}
       <section className="py-20 bg-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.15),transparent_60%)]" />
-        <div ref={ctaRef} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div ref={ctaRef} className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 relative z-10">
           <div className={`text-center space-y-6 reveal ${ctaVisible ? "revealed" : ""}`}>
             <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
               Siap Wujudkan Acara Impian Anda?

@@ -11,7 +11,7 @@ export const ServicesSection: React.FC = () => {
 
   return (
     <section id="produk" className="py-20 bg-white relative">
-      <div ref={ref} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div ref={ref} className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         {/* Section Header */}
         <div className={`text-center max-w-3xl mx-auto space-y-4 mb-16 reveal ${isVisible ? "revealed" : ""}`}>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">

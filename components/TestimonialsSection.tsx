@@ -66,7 +66,7 @@ export const TestimonialsSection: React.FC = () => {
       {/* Dark Overlay over the section */}
       <div className="absolute inset-0 z-0 bg-slate-950/90" />
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 relative z-10">
 
         <div ref={cardsRef} className={`text-center max-w-3xl mx-auto space-y-4 mb-16 reveal ${cardsVisible ? "revealed" : ""}`}>
           <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">

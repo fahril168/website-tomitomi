@@ -73,7 +73,7 @@ export default function ProdukPage() {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/50 to-slate-900/30" />
-        <div ref={heroRef} className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pb-12 w-full">
+        <div ref={heroRef} className="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pb-12 w-full">
           <div className={`space-y-4 reveal ${heroVisible ? "revealed" : ""}`}>
             <div className="flex items-center gap-2 text-emerald-400 text-sm font-semibold">
               <Link href="/" className="hover:text-emerald-300 transition-colors">Beranda</Link>
@@ -92,7 +92,7 @@ export default function ProdukPage() {
 
       {/* Daftar Produk Lengkap */}
       <section className="py-24 bg-white">
-        <div ref={listRef} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref={listRef} className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <div className={`text-center max-w-3xl mx-auto space-y-4 mb-16 reveal ${listVisible ? "revealed" : ""}`}>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
               Katalog Produk Penyewaan
@@ -182,7 +182,7 @@ export default function ProdukPage() {
 
       {/* Alur Pemesanan */}
       <section className="py-24 bg-slate-50">
-        <div ref={processRef} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref={processRef} className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <div className={`text-center max-w-3xl mx-auto space-y-4 mb-16 reveal ${processVisible ? "revealed" : ""}`}>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
               Alur Pemesanan
@@ -218,7 +218,7 @@ export default function ProdukPage() {
       {/* CTA */}
       <section className="py-20 bg-emerald-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent_60%)]" />
-        <div ref={ctaRef} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div ref={ctaRef} className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 relative z-10">
           <div className={`text-center space-y-6 reveal ${ctaVisible ? "revealed" : ""}`}>
             <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
               Tertarik dengan Layanan Kami?

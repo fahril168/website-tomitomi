@@ -146,7 +146,7 @@ export default function KontakPage() {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/50 to-slate-900/30" />
-        <div ref={heroRef} className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pb-12 w-full">
+        <div ref={heroRef} className="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pb-12 w-full">
           <div className={`space-y-4 reveal ${heroVisible ? "revealed" : ""}`}>
             <div className="flex items-center gap-2 text-emerald-400 text-sm font-semibold">
               <Link href="/" className="hover:text-emerald-300 transition-colors">Beranda</Link>
@@ -165,7 +165,7 @@ export default function KontakPage() {
 
       {/* Contact Info Cards */}
       <section className="py-24 bg-white">
-        <div ref={infoRef} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref={infoRef} className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 reveal ${infoVisible ? "revealed" : ""}`}>
             {contactCards.map((card, idx) => (
               <div
@@ -207,7 +207,7 @@ export default function KontakPage() {
 
       {/* Google Maps Full Width */}
       <section className="py-0 bg-slate-50">
-        <div ref={mapRef} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div ref={mapRef} className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-16">
           <div className={`space-y-6 reveal ${mapVisible ? "revealed" : ""}`}>
             <div className="text-center space-y-3">
               <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
@@ -258,7 +258,7 @@ export default function KontakPage() {
 
       {/* FAQ */}
       <section className="py-24 bg-white">
-        <div ref={faqRef} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref={faqRef} className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
           <div className={`reveal ${faqVisible ? "revealed" : ""}`}>
             <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
@@ -281,7 +281,7 @@ export default function KontakPage() {
       {/* CTA Banner */}
       <section className="py-20 bg-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.15),transparent_60%)]" />
-        <div ref={ctaRef} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div ref={ctaRef} className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 relative z-10">
           <div className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center reveal ${ctaVisible ? "revealed" : ""}`}>
             <div className="space-y-5">
               <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">

@@ -21,7 +21,7 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Content — left-aligned, centered vertically */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-32">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-32">
         <div className="max-w-3xl flex flex-col items-start space-y-6">
           {/* Hero Heading */}
           <h1 className="hero-animate hero-animate-1 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.12]">
